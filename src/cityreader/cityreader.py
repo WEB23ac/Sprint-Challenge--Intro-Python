@@ -89,8 +89,44 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     # within will hold the cities that fall within the specified region
     within = []
 
+    # print(f'lat1-{lat1}, lon1-{lon1} || lat2-{lat2}, lon2-{lon2}')
+
+    for city in cities:
+        if lat1 <= city.lat <= lat2 and lon1 <= city.lon <= lon2:
+            within.append(f'{city.name}: ({city.lat}, {city.lon}')
     # TODO Ensure that the lat and lon valuse are all floats
     # Go through each city and check to see if it falls within
     # the specified coordinates.
 
+    print(within)
     return within
+
+
+while True:
+    arguments = input(
+        'Provide upper and lower[latitude, longitude] ~~~~~~~~~~~~~>')
+
+    # print(coords)
+    # for coord in coords:
+    #     print(coord)
+
+    coords_float = [float(coord) for coord in arguments.split(' ')]
+    print(coords_float)
+
+    if len(coords_float) == 4:
+        # assigns upper / coordinates based on value
+        if coords_float[0] < coords_float[2]:
+            lat_1 = coords_float[0]
+            lat_2 = coords_float[2]
+        if coords_float[0] > coords_float[2]:
+            lat_1 = coords_float[2]
+            lat_2 = coords_float[0]
+        if coords_float[1] < coords_float[3]:
+            lon_1 == coords_float[1]
+            lon_2 == coords_float[3]
+        if coords_float[1] > coords_float[3]:
+            lon_1 = coords_float[3]
+            lon_2 = coords_float[1]
+        cityreader_stretch(lat_1, lon_1, lat_2, lon_2, cities)
+    else:
+        print('Incorrect number of argumenst provided.')
