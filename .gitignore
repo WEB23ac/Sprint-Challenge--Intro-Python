@@ -1,2 +1,6 @@
 .vscode
 *.sw[op]
+
+
+__pycache__/
+*.py[cod]
