@@ -104,17 +104,19 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
 
 while True:
     arguments = input(
-        'Provide upper and lower[latitude, longitude] ~~~~~~~~~~~~~>')
+        'Provide upper and lower coordinates: [latitude, longitude] ~~~~~~~~~~~~~>')
 
-    # print(coords)
-    # for coord in coords:
-    #     print(coord)
+    arguments = arguments.split(',')
 
-    coords_float = [float(coord) for coord in arguments.split(' ')]
-    print(coords_float)
+    if len(arguments) != 4:
+        print('Incorrect number of arguments provided.')
+        break
 
-    if len(coords_float) == 4:
+    else:
         # assigns upper / coordinates based on value
+        coords_float = [float(coord) for coord in arguments]
+        print(coords_float)
+
         if coords_float[0] < coords_float[2]:
             lat_1 = coords_float[0]
             lat_2 = coords_float[2]
@@ -128,5 +130,3 @@ while True:
             lon_1 = coords_float[3]
             lon_2 = coords_float[1]
         cityreader_stretch(lat_1, lon_1, lat_2, lon_2, cities)
-    else:
-        print('Incorrect number of argumenst provided.')
